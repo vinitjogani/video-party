@@ -1,0 +1,49 @@
+.video-party-sidebar {
+    position:fixed;
+    right:0;
+    top:0;
+    width: 300px;
+    bottom:0;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    border-left: solid 1px rgba(255,255,255,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.video-party-sidebar button,
+.video-party-sidebar input {
+    padding: 10px;
+    display: block;
+    width: calc(100% - 20px);
+    margin: 1px 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-family: 'Calibri', sans-serif;
+    font-size: 20px;
+    outline: none;
+    border: solid 2px black;
+    text-align: center;
+}
+
+.video-party-sidebar .messages {
+    padding: 10px;
+    flex: 1;
+    color:#e3e3e3;
+}
+
+.video-party-sidebar p {
+    margin-top: 2px;
+    color:#e5e5e5;
+}
+
+.video-party-sidebar .newMessage {
+    text-align: left;
+    font-size: 15px
+}
+
+.video-party-sidebar button {
+    background: #f1c40f;
+    cursor: pointer;
+}

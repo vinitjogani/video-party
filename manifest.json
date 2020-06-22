@@ -1,0 +1,43 @@
+{
+    "name": "Video Party",
+    "version": "1.0",
+    "description": "Watch any HTML5 Video with friends!",
+    "permissions": [
+        "declarativeContent",
+        "activeTab"
+    ],
+    "manifest_version": 2,
+    "icons": {
+        "16": "images/icon.png",
+        "32": "images/icon.png",
+        "64": "images/icon.png",
+        "128": "images/icon.png"
+    },
+    "background": {
+        "page": "background.html",
+        "persistent": false
+    },
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon.png",
+            "32": "images/icon.png",
+            "64": "images/icon.png",
+            "128": "images/icon.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*.mp4"
+            ],
+            "css": [
+                "contentScript.css"
+            ],
+            "js": [
+                "contentScript.js"
+            ]
+        }
+    ],
+    "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com 'sha256-k890bYifLBCpgwpaGobRc5OJ6ZwBMGOdW3ETr9OEN7M='; object-src 'self'; connect-src 'self' wss://*.firebaseio.com;"
+}
