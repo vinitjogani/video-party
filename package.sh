@@ -1,1 +1,1 @@
-zip -r video-party.zip extension/*
+cd extension && zip -r ../video-party.zip .
