@@ -15,8 +15,6 @@ function buildState(video, state) {
 }
 
 const video = document.getElementsByTagName("video")[0];
-video.pause();
-video.currentTime = 0;
 
 let lastChange = 0;
 const fireEvent = (state) => {
@@ -28,9 +26,17 @@ video.onseeked = () => fireEvent("seeked");
 video.onpause = () => fireEvent("paused");
 video.onplay = () => fireEvent("playing");
 
-chrome.runtime.onMessage.addListener((msg, _, __) => {
-    if (msg.type != 'videoPartyStateChangedRecv' || msg.opts.time <= lastChange) return;
+video.pause();
+fireEvent("enter")
 
+chrome.runtime.onMessage.addListener((msg, _, __) => {
+    if (msg.type != 'videoPartyStateChangedRecv') return;
+    if (msg.opts.time <= lastChange) return;
+
+    if (msg.opts.state == "enter") {
+        video.pause();
+        fireEvent("seeked");
+    }
     if (msg.opts.state == "playing") video.play();
     if (msg.opts.state == "seeked") video.currentTime = msg.opts.current;
     if (msg.opts.state == "paused") video.pause();

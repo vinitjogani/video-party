@@ -38,7 +38,11 @@ function newRoom() {
 }
 
 function joinRoom(roomId) {
-    appDb.child(applicationState.roomId).off()
+    if (roomId.trim().length == 0) return;
+
+    if (applicationState.roomId.trim().length > 0)
+        appDb.child(applicationState.roomId).off()
+
     applicationState.roomId = roomId;
     updateState(applicationState);
 
